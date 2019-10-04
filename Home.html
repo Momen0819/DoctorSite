@@ -1,11 +1,13 @@
-
+@{ 
+    Layout = null;
+}
 
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dr.Bahaa El-Deen Aly</title>
+    <title> Dr.Bahaa El-Deen Aly </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -25,31 +27,71 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
     <!-- Animate.css -->
-    <link rel="stylesheet" href="Content/css/animate.css">
+    <link rel="stylesheet" href="~/Content/css/animate.css">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="Content/css/icomoon.css">
+    <link rel="stylesheet" href="~/Content/css/icomoon.css">
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="Content/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
     <!-- Magnific Popup -->
-    <link rel="stylesheet" href="Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/css/magnific-popup.css">
     <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="Content/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="Content/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/css/owl.theme.default.min.css">
     <!-- Flexslider  -->
-    <link rel="stylesheet" href="Content/css/flexslider.css">
+    <link rel="stylesheet" href="~/Content/css/flexslider.css">
     <!-- Flaticons  -->
-    <link rel="stylesheet" href="Content/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/Content/fonts/flaticon/font/flaticon.css">
     <!-- Theme style  -->
-    <link rel="stylesheet" href="Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/style.css">
 
     <!-- Modernizr JS -->
-    <script src="Content/js/modernizr-2.6.2.min.js"></script>
+    <script src="~/Content/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
 
     <style>
+
+        :root {
+          --space: 1rem;
+          --space-large: 1.5rem;
+          --space-largest: 3rem;
+          --color-border: #3c97e8;
+          --color-text: #3c97e8;
+          --border-width: 2px;
+        }
+
+        .c-keyline-text {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              text-transform: uppercase;
+            }
+
+            .c-keyline-text::before,
+            .c-keyline-text::after {
+              content: "";
+              display: inline-block;
+              width: 100%;
+              flex: 0 1 auto;
+              height: var(--border-width);
+              background-color: var(--color-border);
+              white-space: nowrap;
+            }
+
+            .c-keyline-text::before {
+              margin-right: var(--space);
+            }
+
+            .c-keyline-text::after {
+              margin-left: var(--space);
+            }
+
+        img.img-circle {
+            border: 5px solid #3c97e8 !important;
+            max-width: 80px;
+        }
 
         .btn-primary:hover
         {
@@ -60,6 +102,7 @@
         div#colorlib-counter {
             background-color: blue;
         }
+
 
     </style>
 
@@ -126,7 +169,7 @@
         <aside id="colorlib-hero">
             <div class="flexslider">
                 <ul class="slides">
-                    <li style="background-image: url(Content/images/S1.jpg);">
+                    <li style="background-image: url(../../Content/images/slider1.jpeg);">
                         <div class="overlay"></div>
                         <div class="container">
                             <div class="row">
@@ -139,7 +182,7 @@
                             </div>
                         </div>
                     </li>
-                    <li style="background-image: url(Content/images/S4.jpeg);">
+                    <li style="background-image: url(../../Content/images/slider2.jpeg);">
                         <div class="overlay"></div>
                         <div class="container">
                             <div class="row">
@@ -152,7 +195,7 @@
                             </div>
                         </div>
                     </li>
-                    <li style="background-image: url(Content/images/S5.jpeg);">
+                    <li style="background-image: url(../../Content/images/slider3.jpeg);">
                         <div class="overlay"></div>
                         <div class="container">
                             <div class="row">
@@ -218,6 +261,127 @@
             </div>
         </div>
 
+        <div id="colorlib-CalculateBMI">
+            <div class="container">
+                <div class="row">
+                    <div class="form-group c-keyline-text" style="text-align:center;">
+                        <label><input type="radio" name="Gender" id="Gender1" value="1" checked class="radio-inline" onchange="Check(1)" /></label>
+                        <a onclick="Check(1)"><img src="~/Content/images/m.png" class="img-circle" id="M" /></a>
+                        <label><input type="radio" name="Gender" id="Gender2" value="2" class="radio-inline" onchange="Check(2)" /></label>
+                        <a onclick="Check(2)"><img src="~/Content/images/f.png" style="opacity:0.7" class="img-circle" id="F" /></a>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-lg-6">
+                            <label id="Validation" class="alert-danger" style="display:none">You have entered incorrect data</label>
+                            <div class="form-group">
+                                <label>Weight (KG) </label>
+                                <input type="number" id="weight" class="form-control" min="1" style="text-align:left" />
+                            </div>
+                            <div class="form-group">
+                                <label> Height (CM) </label>
+                                <input type="number" id="height" class="form-control" min="1" style="text-align:left" />
+                            </div>
+                            <div class="form-group">
+                                <label> Age</label>
+                                <input type="number" id="age" class="form-control" min="1" style="text-align:left" />
+                            </div>
+                            <div class="form-group">
+                                <input type="button" class="btn btn-primary" onclick="CalculateBMI()" value="Calculate BMI" />
+                                <input type="button" class="btn btn-primary" onclick="CalculateCaluries()" value="Calculate Calories" />
+                            </div>
+                        </div>
+                        <div class="col-lg-6" style="text-align:left !important;height:300px;overflow-x:hidden;overflow-y:scroll;">
+                            <label> List of calories </label>
+                            <table class="table table-responsive table-bordered">
+                                <tr style="background-color:#3c97e8;color:white">
+                                    <th style="text-align:left !important;">Type</th>
+                                    <th style="text-align:left !important;">Quantity</th>
+                                    <th style="text-align:left !important;">Count of calories</th>
+
+
+                                </tr>
+                                <tr>
+                                    <td>Apple</td>
+                                    <td>1</td>
+                                    <td>59</td>
+                                </tr>
+                                <tr>
+                                    <td>banana</td>
+                                    <td>1</td>
+
+                                    <td>151</td>
+                                </tr>
+                                <tr>
+                                    <td>Grapes</td>
+                                    <td>Glass</td>
+
+                                    <td>100</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Peaches</td>
+                                    <td>1</td>
+
+                                    <td>53</td>
+
+                                </tr>
+                                <tr>
+                                    <td>strawberry</td>
+                                    <td>Glass</td>
+
+                                    <td>53</td>
+
+                                </tr>
+                                <tr>
+                                    <td>broccoli</td>
+                                    <td>Glass</td>
+
+                                    <td>45</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Carrots</td>
+                                    <td>Glass</td>
+
+                                    <td>50</td>
+                                </tr>
+                                <tr>
+                                    <td>Tomatoes</td>
+                                    <td>Glass</td>
+
+                                    <td>22</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Meat</td>
+                                    <td>Two pieces</td>
+
+                                    <td>142</td>
+
+                                </tr>
+                                <tr>
+                                    <td>Chicks</td>
+                                    <td>Two pieces</td>
+
+                                    <td>136</td>
+
+                                </tr>
+                                <tr>
+                                    <td>eggs</td>
+                                    <td>1</td>
+
+                                    <td>78</td>
+
+                                </tr>
+                            </table>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="colorlib-blog">
             <div class="container">
                 <div class="row animate-box">
@@ -229,14 +393,13 @@
                 <div class="row">
                     <div class="col-md-4 animate-box">
                         <div class="blog-entry">
-                            <a href="blog.html" class="blog-img" style="background-image: url(Content/images/blog-1.jpg);"></a>
+                            <a href="blog.html" class="blog-img" style="background-image: url(../../Content/images/y3.png);"></a>
                             <div class="desc">
                                 <p class="date">
-                                    <span><a href="#">Admin</a></span>
+                                    <span><a href="#">Dr.Bahaa El-Deen Aly</a></span>
                                     <span>June 8 2017</span>
-                                    <span><a href="#">4 <i class="icon-speech-bubble"></i></a></span>
                                 </p>
-                                <h3><a href="blog.html">Here's why yoga is best for your health</a></h3>
+                                <h3><a href="#">Eating apple is the source of energy</a></h3>
                                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                                 <p><a href="#">Read more <i class="icon-arrow-right3"></i></a></p>
                             </div>
@@ -244,14 +407,13 @@
                     </div>
                     <div class="col-md-4 animate-box">
                         <div class="blog-entry">
-                            <a href="blog.html" class="blog-img" style="background-image: url(Content/images/blog-2.jpg);"></a>
+                            <a href="blog.html" class="blog-img" style="background-image: url(../../Content/images/y3.png);"></a>
                             <div class="desc">
                                 <p class="date">
-                                    <span><a href="#">Admin</a></span>
+                                    <span><a href="#">Dr.Bahaa El-Deen Aly</a></span>
                                     <span>June 8 2017</span>
-                                    <span><a href="#">4 <i class="icon-speech-bubble"></i></a></span>
                                 </p>
-                                <h3><a href="blog.html">live better get to know your medical technology</a></h3>
+                                <h3><a href="#">Eating apple is the source of energy</a></h3>
                                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                                 <p><a href="#">Read more <i class="icon-arrow-right3"></i></a></p>
                             </div>
@@ -259,14 +421,13 @@
                     </div>
                     <div class="col-md-4 animate-box">
                         <div class="blog-entry">
-                            <a href="blog.html" class="blog-img" style="background-image: url(Content/images/blog-3.jpg);"></a>
+                            <a href="blog.html" class="blog-img" style="background-image: url(../../Content/images/y3.png);"></a>
                             <div class="desc">
                                 <p class="date">
-                                    <span><a href="#">Admin</a></span>
+                                    <span><a href="#">Dr.Bahaa El-Deen Aly</a></span>
                                     <span>June 8 2017</span>
-                                    <span><a href="#">4 <i class="icon-speech-bubble"></i></a></span>
                                 </p>
-                                <h3><a href="blog.html">Eating apple is the source of energy</a></h3>
+                                <h3><a href="#">Eating apple is the source of energy</a></h3>
                                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                                 <p><a href="#">Read more <i class="icon-arrow-right3"></i></a></p>
                             </div>
@@ -282,7 +443,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-push-6 animate-box">
-                        <img class="img-responsive about-img" src="Content/images/about.png" alt="">
+                        <img class="img-responsive about-img" src="~/Content/images/about.png" alt="">
                     </div>
                     <div class="col-md-6 col-md-pull-6 animate-box">
                         <h2>About Healthcare</h2>
@@ -355,7 +516,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="choose">
-                        <div class="half img-bg" style="background-image: url(Content/images/cover_bg_1.jpg);"></div>
+                        <div class="half img-bg" style="background-image: url(../../Content/images/cover_bg_1.jpg);"></div>
                         <div class="half features-wrap">
                             <div class="features-services animate-box">
                                 <div class="colorlib-heading animate-box">
@@ -425,7 +586,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="doctor-img" style="background-image: url(Content/images/staff-3.jpg);">
+                                        <div class="doctor-img" style="background-image: url(../../Content/images/staff-3.jpg);">
                                         </div>
                                     </div>
                                 </div>
@@ -439,7 +600,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="doctor-img" style="background-image: url(Content/images/staff-1.jpg);">
+                                        <div class="doctor-img" style="background-image: url(../../Content/images/staff-1.jpg);">
                                         </div>
                                     </div>
                                 </div>
@@ -453,7 +614,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="doctor-img" style="background-image: url(Content/images/staff-2.jpg);">
+                                        <div class="doctor-img" style="background-image: url(../../Content/images/staff-2.jpg);">
                                         </div>
                                     </div>
                                 </div>
@@ -519,7 +680,7 @@
                             </div>
 
                             <div class="services-wrap-flex">
-                                <div class="one-fifth services-img animate-box" style="background-image: url(Content/images/services-1.jpg);">
+                                <div class="one-fifth services-img animate-box" style="background-image: url(../../Content/images/services-1.jpg);">
                                     <div class="services">
                                         <div class="desc">
                                             <span>Mission</span>
@@ -529,7 +690,7 @@
                                 </div>
                                 <div class="one-half">
                                     <div class="one-full-flex">
-                                        <div class="one-fifth services-img animate-box" style="background-image: url(Content/images/services-2.jpg);">
+                                        <div class="one-fifth services-img animate-box" style="background-image: url(../../Content/images/services-2.jpg);">
                                             <div class="services">
                                                 <div class="desc">
                                                     <span>Vision</span>
@@ -667,28 +828,28 @@
     </div>
 
     <!-- jQuery -->
-    <script src="Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery.min.js"></script>
     <!-- jQuery Easing -->
-    <script src="Content/js/jquery.easing.1.3.js"></script>
+    <script src="~/Content/js/jquery.easing.1.3.js"></script>
     <!-- Bootstrap -->
-    <script src="Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
     <!-- Waypoints -->
-    <script src="Content/js/jquery.waypoints.min.js"></script>
+    <script src="~/Content/js/jquery.waypoints.min.js"></script>
     <!-- Stellar Parallax -->
-    <script src="Content/js/jquery.stellar.min.js"></script>
+    <script src="~/Content/js/jquery.stellar.min.js"></script>
     <!-- Carousel -->
-    <script src="Content/js/owl.carousel.min.js"></script>
+    <script src="~/Content/js/owl.carousel.min.js"></script>
     <!-- Flexslider -->
-    <script src="Content/js/jquery.flexslider-min.js"></script>
+    <script src="~/Content/js/jquery.flexslider-min.js"></script>
     <!-- countTo -->
-    <script src="Content/js/jquery.countTo.js"></script>
+    <script src="~/Content/js/jquery.countTo.js"></script>
     <!-- Magnific Popup -->
-    <script src="Content/js/jquery.magnific-popup.min.js"></script>
-    <script src="Content/js/magnific-popup-options.js"></script>
+    <script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/magnific-popup-options.js"></script>
     <!-- Sticky Kit -->
-    <script src="Content/js/sticky-kit.min.js"></script>
+    <script src="~/Content/js/sticky-kit.min.js"></script>
     <!-- Main -->
-    <script src="Content/js/main.js"></script>
+    <script src="~/Content/js/main.js"></script>
 
     <script>
 
@@ -700,7 +861,73 @@
         });
 
         function ArabicPage() {
-            location.href = "HomeAr.html";
+            location.href = "/Home/IndexAr";
+        }
+
+        function Check(type) {
+            $('#M').css("opacity", 1);
+            $('#F').css("opacity", 1);
+            if (type == 1) {
+                $('#F').css("opacity", 0.7);
+                $('#Gender' + type).prop("checked", true);
+            }
+            else {
+                $('#M').css("opacity", 0.7);
+                $('#Gender' + type).prop("checked", true);
+            }
+        }
+
+        function CalculateBMI() {
+            if ($('#weight').val() == "" || $('#height').val() == "" || $('#age').val() == "") {
+                $('#Validation').show();
+                return 0;
+            }
+
+            if ($('#weight').val() < 1 || $('#height').val() < 1 || $('#age').val() < 1) {
+                $('#Validation').show();
+                return 0;
+            }
+            $('#Validation').hide();
+            var BMI = parseFloat($('#weight').val()) / (Math.pow(parseFloat($('#height').val() / 100), 2));
+            if (BMI < 18.5)
+                swal("Your BMI " + Math.round(BMI), " That's less than normal weight");
+            else if (BMI >= 18.5 && BMI <= 24.9)
+                swal("Your BMI " + Math.round(BMI), " This weight is normal");
+            else if (BMI >= 25 && BMI <= 29.9)
+                swal("Your BMI " + Math.round(BMI), " This is an indicator of obesity");
+            else if (BMI >= 30 && BMI <= 39.9)
+                swal("Your BMI " + Math.round(BMI), "  This is an indication of very obese");
+            else
+                swal(" Something went wrong");
+        }
+
+        function CalculateCaluries() {
+            if ($('#weight').val() == "" || $('#height').val() == "" || $('#age').val() == "") {
+                $('#Validation').show();
+                return 0;
+            }
+
+            if ($('#weight').val() < 1 || $('#height').val() < 1 || $('#age').val() < 1) {
+                $('#Validation').show();
+                return 0;
+            }
+            $('#Validation').hide();
+            if ($("input[name='Gender']:checked").val() == 1) {
+                var Cal = (parseFloat($('#weight').val()) * 13.75) + (parseFloat($('#height').val()) * 5);
+                Cal = Cal - (6.76 * parseInt($('#age').val())) + 66;
+                if (Cal > 0)
+                    swal(" Calories " + Math.round(Cal), " Your daily calorie needs");
+                else
+                    swal(" Something went wrong");
+            }
+            else {
+                var Cal = (parseFloat($('#weight').val()) * 9.56) + (parseFloat($('#height').val()) * 1.85);
+                Cal = Cal - (4.68 * parseInt($('#age').val())) + 655;
+                if (Cal > 0)
+                    swal(" Calories " + Math.round(Cal), " Your daily calorie needs");
+                else
+                    swal(" Something went wrong");
+            }
         }
 
     </script>
